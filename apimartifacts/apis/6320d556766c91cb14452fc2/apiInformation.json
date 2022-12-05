@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "apimcallapim",
+    "isCurrent": true,
+    "path": "apimcallapim",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://127.0.0.1/logicapps/",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "logicapps",
+    "isCurrent": true,
+    "path": "logicapps",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://demowsibcla.azurewebsites.net:443/api/demopost/triggers/manual/",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}

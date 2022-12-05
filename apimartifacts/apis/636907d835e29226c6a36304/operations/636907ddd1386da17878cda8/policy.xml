@@ -1,0 +1,84 @@
+<!--
+    IMPORTANT:
+    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
+    - To remove a policy, delete the corresponding policy statement from the policy document.
+    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
+    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
+    - Policies are applied in the order of their appearance, from the top down.
+    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
+-->
+<policies>
+	<inbound>
+		<trace source="Test" severity="information">@("Hello World")</trace>
+		<set-variable name="acces_code" value="@((string)context.Request.Body.As<string>())" />
+		<send-request ignore-error="true" timeout="20" response-variable-name="accessTokenResult" mode="new">
+			<set-url>https://login.microsoftonline.com/337ed392-6aa5-43c7-aaa7-b8b08571ac4f/oauth2/v2.0/token</set-url>
+			<set-method>POST</set-method>
+			<set-header name="Content-Type" exists-action="override">
+				<value>application/x-www-form-urlencoded</value>
+			</set-header>
+			<set-body>@{return (string)context.Variables["acces_code"] + "&client_id=7ebe5451-ba9a-4061-bd2a-af23e93dbb38&scope=7ebe5451-ba9a-4061-bd2a-af23e93dbb38/.default&client_secret=aLH8Q~mwHMWnHQzH8jXNzpHr6SDVx.3Fq0ZvLcme&grant_type=authorization_code&redirect_uri=https%3A%2F%2Fgateway.contosoapi202201.com%2Fmauthapim%2Fresource%3Fparam1%3DHelloWorld%26subscription-key%3Ddb8e0ec05c4c4955a395097261458f74";}</set-body>
+		</send-request>
+		<set-variable name="accessToken" value="@(((IResponse)context.Variables["accessTokenResult"]).Body.As<JObject>())" />
+		<set-variable name="bearerToken" value="@((string)((JObject)context.Variables["accessToken"])["access_token"])" />
+		<set-variable name="tokenDurationSeconds" value="@((int)((JObject)context.Variables["accessToken"])["expires_in"])" />
+		<set-header name="Authorization" exists-action="override">
+			<value>@("Bearer " + (string)context.Variables["bearerToken"])</value>
+		</set-header>
+		<validate-jwt header-name="Authorization" failed-validation-httpcode="403" failed-validation-error-message="Forbidden" output-token-variable-name="valid-jwt">
+			<openid-config url="https://login.microsoftonline.com/337ed392-6aa5-43c7-aaa7-b8b08571ac4f/v2.0/.well-known/openid-configuration" />
+			<audiences>
+				<audience>7ebe5451-ba9a-4061-bd2a-af23e93dbb38</audience>
+			</audiences>
+			<issuers>
+				<issuer>https://sts.windows.net/337ed392-6aa5-43c7-aaa7-b8b08571ac4f/</issuer>
+			</issuers>
+		</validate-jwt>
+		<choose>
+			<when condition="@{
+                    var jwt = (Jwt)context.Variables["valid-jwt"];
+                    var hasclaim = false;
+                    string[] validRoles = { "WriterUser", "ReaderUser" };
+                    if(jwt.Claims.ContainsKey("roles")){
+                        var roles = jwt.Claims["roles"];
+                        if(!Array.Exists(roles, element => validRoles.Contains(element)))
+                        {
+                            return true;
+                        }             
+                    } else { 
+                        return true;
+                    }
+
+                    return false;
+                }">
+				<return-response>
+					<set-status code="401" reason="Unauthorized" />
+				</return-response>
+			</when>
+			<otherwise>
+				<set-status code="200" reason="OK" />
+			</otherwise>
+		</choose>
+		<return-response>
+			<set-header name="Content-Type" exists-action="override">
+				<value>application/json</value>
+			</set-header>
+			<set-body template="none">@{
+                return "This user have the following roles: " + String.Join(",", context.Request.Headers.GetValueOrDefault("Authorization")?.Split(' ')?[1].AsJwt()?.Claims["roles"]) + " Token: " + context.Request.Headers.GetValueOrDefault("Authorization");
+                }</set-body>
+		</return-response>
+		<base />
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
+</policies>

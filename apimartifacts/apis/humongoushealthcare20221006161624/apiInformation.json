@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "workshop",
+    "isCurrent": true,
+    "path": "workshop",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://humongoushealthcare20221006161624.azurewebsites.net/HealthCheck",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}

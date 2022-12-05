@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "displayName": "authorizationServer",
+    "keyVault": {
+      "secretIdentifier": "https://keyvbob.vault.azure.net/secrets/authorizationServer"
+    },
+    "secret": true,
+    "tags": [
+      "ASPNET6DEMOCINEMA"
+    ]
+  }
+}

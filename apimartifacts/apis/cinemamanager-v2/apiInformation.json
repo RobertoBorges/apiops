@@ -1,0 +1,24 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "apiVersion": "v2",
+    "apiVersionSetId": "/subscriptions/dea5dcc6-1a1a-4694-8e6c-f340da9c7ea1/resourceGroups/apim-appGw-RG/providers/Microsoft.ApiManagement/service/contosoapi202202/apiVersionSets/635adb125679b8002db69eac",
+    "authenticationSettings": {
+      "oAuth2": {
+        "authorizationServerId": "demoapi"
+      }
+    },
+    "description": "API Using Microsoft Identity Library to validate OAuth Tokens\n\nAuthor: Roberto Borges\n\nDemo for customers histing Apis on Apis Apps, .Net 6 ",
+    "displayName": "CinemaManager",
+    "isCurrent": true,
+    "path": "cinema",
+    "protocols": [
+      "https"
+    ],
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}

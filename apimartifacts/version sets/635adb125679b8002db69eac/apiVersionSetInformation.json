@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "description": "API Using Microsoft Identity Library to validate OAuth Tokens",
+    "displayName": "CinemaManager",
+    "versionQueryName": "api-version",
+    "versioningScheme": "Query"
+  }
+}

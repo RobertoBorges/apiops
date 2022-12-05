@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: MyAuthenticatedAPI-APIM
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://gateway.contosoapi202201.com/mauthapim
+  - url: https://selfgw.contosoapi202201.com/mauthapim
+paths:
+  /resource:
+    post:
+      summary: resource
+      description: resource
+      operationId: 636907ddd1386da17878cda8
+      parameters:
+        - name: param1
+          in: query
+          description: A sample parameter that is required and has a default value of "sample".
+          required: true
+          schema:
+            enum:
+              - sample
+            type: string
+        - name: param2
+          in: query
+          description: 'Another sample parameter, set to not required.'
+          schema:
+            type: number
+      responses:
+        '200':
+          description: 
+  /clone-withdebug/resource:
+    post:
+      summary: resource-withdebug
+      description: resource
+      operationId: 6369204ebeb39cebe8a38078
+      parameters:
+        - name: param1
+          in: query
+          description: A sample parameter that is required and has a default value of "sample".
+          required: true
+          schema:
+            enum:
+              - sample
+            type: string
+        - name: param2
+          in: query
+          description: 'Another sample parameter, set to not required.'
+          schema:
+            type: number
+      responses:
+        '200':
+          description: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "MyAuthenticatedAPI-APIM",
+    "isCurrent": true,
+    "path": "mauthapim",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "http://echoapi.cloudapp.net/api",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}

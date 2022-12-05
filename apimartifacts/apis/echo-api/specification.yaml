@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Echo API
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://gateway.contosoapi202201.com/echo
+  - url: https://selfgw.contosoapi202201.com/echo
+paths:
+  /resource:
+    get:
+      summary: resource
+      description: resource
+      operationId: resource
+      parameters:
+        - name: param1
+          in: query
+          description: A sample parameter that is required and has a default value of "sample".
+          required: true
+          schema:
+            enum:
+              - sample
+            type: string
+        - name: param2
+          in: query
+          description: 'Another sample parameter, set to not required.'
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Returned in all cases.
+  /card:
+    post:
+      summary: send-teams-card
+      description: send-teams-card
+      operationId: send-teams-card
+      parameters:
+        - name: message
+          in: query
+          description: message you want to send
+          schema:
+            type: ''
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

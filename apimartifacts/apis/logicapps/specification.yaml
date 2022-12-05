@@ -1,0 +1,54 @@
+openapi: 3.0.1
+info:
+  title: logicapps
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://gateway.contosoapi202201.com/logicapps
+  - url: https://selfgw.contosoapi202201.com/logicapps
+paths:
+  /invoke:
+    post:
+      summary: invoke
+      operationId: invoke
+      parameters:
+        - name: api-version
+          in: query
+          schema:
+            enum:
+              - ''
+            type: ''
+        - name: sp
+          in: query
+          schema:
+            enum:
+              - ''
+            type: ''
+        - name: sv
+          in: query
+          schema:
+            enum:
+              - ''
+            type: ''
+        - name: sig
+          in: query
+          schema:
+            enum:
+              - ''
+            type: ''
+      responses:
+        '200':
+          description: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

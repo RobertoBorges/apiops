@@ -1,0 +1,79 @@
+openapi: 3.0.1
+info:
+  title: Star Wars
+  description: ''
+  version: '1.0'
+servers:
+  - url: https://gateway.contosoapi202201.com/sw
+  - url: https://selfgw.contosoapi202201.com/sw
+paths:
+  /people/:
+    get:
+      tags:
+        - star-wars-api
+      summary: GetPeople
+      description: GetPeople
+      operationId: getpeople
+      responses:
+        '200':
+          description: ''
+  '/people/{id}/':
+    get:
+      tags:
+        - star-wars-api
+      summary: GetPeopleById
+      description: GetPeopleById
+      operationId: getpeoplebyid
+      parameters:
+        - name: id
+          in: path
+          description: Id of the person youare looking for
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+  /film:
+    get:
+      summary: GetFilm
+      description: GetFilm
+      operationId: getfilm
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              example:
+                count: 1
+                films:
+                  - title: A New Hope
+                    release-date: '1977-05-25'
+  '/clone-631b6/people/{id}/':
+    get:
+      summary: GetPeopleById (clone)
+      description: GetPeopleById
+      operationId: 631b6d7a887f8e958bd5090e
+      parameters:
+        - name: id
+          in: path
+          description: Id of the person youare looking for
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: ''
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

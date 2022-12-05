@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "DemoMELCC",
+    "isCurrent": true,
+    "path": "environment",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "http://localhost.com",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}

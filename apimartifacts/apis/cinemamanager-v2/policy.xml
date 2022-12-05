@@ -1,0 +1,76 @@
+<!--
+    IMPORTANT:
+    - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
+    - To remove a policy, delete the corresponding policy statement from the policy document.
+    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
+    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
+    - Policies are applied in the order of their appearance, from the top down.
+    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
+-->
+<policies>
+	<inbound>
+		<base />
+		<set-backend-service base-url="https://demomovieapi.azurewebsites.net" />
+		<!--
+        <trace source="PetStore API" severity="verbose">
+            <message>Hello World</message>
+            <metadata name="Apim Policy validation" value="Single-Message" />
+        </trace>
+        <send-request ignore-error="true" timeout="20" response-variable-name="accessTokenResult" mode="new">
+            <set-url>{{authorizationServer}}</set-url>
+            <set-method>POST</set-method>
+            <set-header name="Content-Type" exists-action="override">
+                <value>application/x-www-form-urlencoded</value>
+            </set-header>
+            <set-body>@{return "client_id={{clientId}}&scope={{scope}}/.default&client_secret={{clientSecret}}&grant_type=client_credentials";}</set-body>
+        </send-request>
+        <set-variable name="accessToken" value="@(((IResponse)context.Variables["accessTokenResult"]).Body.As<JObject>())" />
+        <set-variable name="bearerToken" value="@((string)((JObject)context.Variables["accessToken"])["access_token"])" />
+        <set-variable name="tokenDurationSeconds" value="@((int)((JObject)context.Variables["accessToken"])["expires_in"])" />
+        <set-header name="Authorization" exists-action="override">
+            <value>@("Bearer " + (string)context.Variables["bearerToken"])</value>
+        </set-header>
+        <cache-store-value key="bearerToken" value="@((string)context.Variables["bearerToken"])" duration="@((int)context.Variables["tokenDurationSeconds"])" />
+        -->
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<trace source="PetStore API" severity="verbose">
+			<message>@(context.LastError.Message)</message>
+			<metadata name="Apim Policy validation" value="Error-Message" />
+		</trace>
+		<set-header name="ErrorSource" exists-action="override">
+			<value>@(context.LastError.Source)</value>
+		</set-header>
+		<set-header name="ErrorReason" exists-action="override">
+			<value>@(context.LastError.Reason)</value>
+		</set-header>
+		<set-header name="ErrorMessage" exists-action="override">
+			<value>@(context.LastError.Message)</value>
+		</set-header>
+		<set-header name="ErrorScope" exists-action="override">
+			<value>@(context.LastError.Scope)</value>
+		</set-header>
+		<set-header name="ErrorSection" exists-action="override">
+			<value>@(context.LastError.Section)</value>
+		</set-header>
+		<set-header name="ErrorPath" exists-action="override">
+			<value>@(context.LastError.Path)</value>
+		</set-header>
+		<set-header name="ErrorPolicyId" exists-action="override">
+			<value>@(context.LastError.PolicyId)</value>
+		</set-header>
+		<set-header name="ErrorStatusCode" exists-action="override">
+			<value>@(context.Response.StatusCode.ToString())</value>
+		</set-header>
+		<base />
+	</on-error>
+</policies>

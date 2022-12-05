@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "description": "HumongousHealthcare20221006161624",
+    "protocol": "http",
+    "resourceId": "https://management.azure.com/subscriptions/dea5dcc6-1a1a-4694-8e6c-f340da9c7ea1/resourceGroups/workshop/providers/Microsoft.Web/sites/HumongousHealthcare20221006161624",
+    "url": "https://humongoushealthcare20221006161624.azurewebsites.net"
+  }
+}

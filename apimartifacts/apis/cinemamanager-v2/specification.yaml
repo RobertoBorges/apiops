@@ -1,0 +1,639 @@
+openapi: 3.0.1
+info:
+  title: CinemaManager
+  description: "API Using Microsoft Identity Library to validate OAuth Tokens\n\nAuthor: Roberto Borges\n\nDemo for customers histing Apis on Apis Apps, .Net 6 "
+  version: v2
+servers:
+  - url: https://gateway.contosoapi202201.com/cinema
+  - url: https://selfgw.contosoapi202201.com/cinema
+paths:
+  /api/Movies:
+    get:
+      tags:
+        - Movies
+      summary: /api/Movies - GET
+      description: Get the list of movies available on database
+      operationId: get-api-movies
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+              example:
+                - id: 0
+                  title: string
+                  genre: string
+                  releaseDate: string
+                  sessionId: 0
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Movie'
+              example:
+                - id: 0
+                  title: string
+                  genre: string
+                  releaseDate: string
+                  sessionId: 0
+    put:
+      tags:
+        - Movies
+      summary: /api/Movies - PUT
+      description: Add/Modify a movies available on database
+      operationId: put-api-movies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+            example:
+              id: 0
+              title: string
+              genre: string
+              releaseDate: string
+              sessionId: 0
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+            example:
+              id: 0
+              title: string
+              genre: string
+              releaseDate: string
+              sessionId: 0
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Movie'
+            example:
+              id: 0
+              title: string
+              genre: string
+              releaseDate: string
+              sessionId: 0
+      responses:
+        '200':
+          description: Success
+  '/api/Movies/{id}':
+    get:
+      tags:
+        - Movies
+      summary: '/api/Movies/{id} - GET'
+      description: Get movie available on database by ID
+      operationId: get-api-movies-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - int32.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+    delete:
+      tags:
+        - Movies
+      summary: '/api/Movies/{id} - DELETE'
+      description: Delete a movie available on database
+      operationId: delete-api-movies-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - int32.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  '/api/Movies/Genre/{genre}':
+    get:
+      tags:
+        - Movies
+      summary: '/api/Movies/Genre/{genre} - GET'
+      description: Get movie available on database by Genre
+      operationId: get-api-movies-genre-genre
+      parameters:
+        - name: genre
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+  '/api/Movies/Title/{title}':
+    get:
+      tags:
+        - Movies
+      summary: '/api/Movies/Title/{title} - GET'
+      description: Get movie available on database by Title
+      operationId: get-api-movies-title-title
+      parameters:
+        - name: title
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Movie'
+              example:
+                id: 0
+                title: string
+                genre: string
+                releaseDate: string
+                sessionId: 0
+  /api/Sessions:
+    get:
+      tags:
+        - Sessions
+      summary: /api/Sessions - GET
+      description: Get sessions available on database
+      operationId: get-api-sessions
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+              example:
+                - id: 0
+                  day: string
+                  room: string
+                  movies:
+                    - id: 0
+                      title: string
+                      genre: string
+                      releaseDate: string
+                      sessionId: 0
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Session'
+              example:
+                - id: 0
+                  day: string
+                  room: string
+                  movies:
+                    - id: 0
+                      title: string
+                      genre: string
+                      releaseDate: string
+                      sessionId: 0
+    put:
+      tags:
+        - Sessions
+      summary: /api/Sessions - PUT
+      description: Add/Modify sessions available on database
+      operationId: put-api-sessions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+            example:
+              id: 0
+              day: string
+              room: string
+              movies:
+                - id: 0
+                  title: string
+                  genre: string
+                  releaseDate: string
+                  sessionId: 0
+          text/json:
+            schema:
+              $ref: '#/components/schemas/Session'
+            example:
+              id: 0
+              day: string
+              room: string
+              movies:
+                - id: 0
+                  title: string
+                  genre: string
+                  releaseDate: string
+                  sessionId: 0
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/Session'
+            example:
+              id: 0
+              day: string
+              room: string
+              movies:
+                - id: 0
+                  title: string
+                  genre: string
+                  releaseDate: string
+                  sessionId: 0
+      responses:
+        '200':
+          description: Success
+  '/api/Sessions/{id}':
+    get:
+      tags:
+        - Sessions
+      summary: '/api/Sessions/{id} - GET'
+      description: Get sessions available on database by ID
+      operationId: get-api-sessions-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - int32.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Session'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+    delete:
+      tags:
+        - Sessions
+      summary: '/api/Sessions/{id} - DELETE'
+      description: Delete a session available on database
+      operationId: delete-api-sessions-id
+      parameters:
+        - name: id
+          in: path
+          description: Format - int32.
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Success
+  '/api/Sessions/Day/{day}':
+    get:
+      tags:
+        - Sessions
+      summary: '/api/Sessions/Day/{day} - GET'
+      description: Get sessions available on database by day of the week
+      operationId: get-api-sessions-day-day
+      parameters:
+        - name: day
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Session'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+  '/api/Sessions/Room/{room}':
+    get:
+      tags:
+        - Sessions
+      summary: '/api/Sessions/Room/{room} - GET'
+      description: Get sessions available on database by room
+      operationId: get-api-sessions-room-room
+      parameters:
+        - name: room
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/Session'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+            text/json:
+              schema:
+                $ref: '#/components/schemas/Session'
+              example:
+                id: 0
+                day: string
+                room: string
+                movies:
+                  - id: 0
+                    title: string
+                    genre: string
+                    releaseDate: string
+                    sessionId: 0
+  /api/WeatherForecast:
+    get:
+      tags:
+        - WeatherForecast
+      summary: GetWeatherForecast
+      description: Get random weather forecast
+      operationId: GetWeatherForecast
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+              examples:
+                default:
+                  value: 
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+              example:
+                - date: string
+                  temperatureC: 0
+                  temperatureF: 0
+                  summary: string
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WeatherForecast'
+              example:
+                - date: string
+                  temperatureC: 0
+                  temperatureF: 0
+                  summary: string
+  /api/ShowMyToken/token:
+    get:
+      tags:
+        - token
+      summary: Token
+      operationId: token
+      responses:
+        '200':
+          description: 
+  /bing:
+    get:
+      summary: bing
+      operationId: bing
+      responses:
+        '200':
+          description: 
+  /listinbound:
+    get:
+      summary: listinbound
+      operationId: listinbound
+      responses:
+        '200':
+          description: 
+  /authenticate:
+    get:
+      summary: /authenticate
+      operationId: authenticate
+      responses:
+        '200':
+          description: 
+  /myapi:
+    post:
+      summary: myapi
+      operationId: authuser
+      responses:
+        '200':
+          description: 
+components:
+  schemas:
+    Movie:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        title:
+          type: string
+          nullable: true
+        genre:
+          type: string
+          nullable: true
+        releaseDate:
+          type: string
+          format: date-time
+        sessionId:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Session:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        day:
+          type: string
+          nullable: true
+        room:
+          type: string
+          nullable: true
+        movies:
+          type: array
+          items:
+            $ref: '#/components/schemas/Movie'
+          nullable: true
+      additionalProperties: false
+    WeatherForecast:
+      type: object
+      properties:
+        date:
+          type: string
+          format: date-time
+        temperatureC:
+          type: integer
+          format: int32
+        temperatureF:
+          type: integer
+          format: int32
+          readOnly: true
+        summary:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

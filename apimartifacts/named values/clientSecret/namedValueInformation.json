@@ -1,0 +1,12 @@
+{
+  "properties": {
+    "displayName": "clientSecret",
+    "keyVault": {
+      "secretIdentifier": "https://keyvbob.vault.azure.net/secrets/clientSecret"
+    },
+    "secret": true,
+    "tags": [
+      "ASPNET6DEMOCINEMA"
+    ]
+  }
+}
