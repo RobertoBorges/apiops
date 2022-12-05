@@ -73,7 +73,7 @@ steps:
   inputs:
     targetType: 'inline'
     script: |
-      wget https://github.com/Azure/apiops/releases/download/$(apiops_release_version)/publisher
+      wget https://github.com/RobertoBorges/apiops/releases/download/$(apiops_release_version)/publisher
       result=$?
       echo "Exit code is $result"
       exit $result
