@@ -17,7 +17,7 @@ on:
         type: string          
 
 env:
-  apiops_release_version: v1.0
+  apiops_release_version: v.1.0
   
 jobs:
   build:
