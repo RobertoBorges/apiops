@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "credentials": {
+      "instrumentationKey": "{{Logger-Credentials--6455216b8feb89102c21a4c9}}"
+    },
+    "isBuffered": true,
+    "loggerType": "applicationInsights",
+    "resourceId": "/subscriptions/3464f809-852d-45e3-846c-f5411419cc83/resourceGroups/rg-shared-bob-dev-eastus-001/providers/Microsoft.Insights/components/appi-bob-dev-eastus-001"
+  }
+}
