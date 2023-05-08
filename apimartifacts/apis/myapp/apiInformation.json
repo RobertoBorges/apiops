@@ -2,13 +2,14 @@
   "properties": {
     "apiRevision": "1",
     "authenticationSettings": {},
-    "displayName": "Echo API - Brought from dev portal",
+    "description": "This is a simple App hosted on top of a ASE environment with a full private dns",
+    "displayName": "Myapp",
     "isCurrent": true,
-    "path": "echo",
+    "path": "myapp",
     "protocols": [
       "https"
     ],
-    "serviceUrl": "http://echoapi.cloudapp.net/api",
+    "serviceUrl": "https://myapp.mydemocompany.com/",
     "subscriptionKeyParameterNames": {
       "header": "Ocp-Apim-Subscription-Key",
       "query": "subscription-key"
