@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "This is a simple App hosted on top of a ASE environment with a full private dns",
+    "displayName": "Myapp2",
+    "isCurrent": true,
+    "path": "myapp2",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://myapp.mydemocompany.com/",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false
+  }
+}
