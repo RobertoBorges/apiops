@@ -14,6 +14,11 @@
 	<inbound>
 		<base />
 		<choose>
+			<!--
+				IMPORTANT:
+				This sample only answers to requests with a version header of v1 or v2.
+				This must be a contract between the API and the caller.
+			-->
 			<when condition="@(!context.Request.Headers.ContainsKey("version"))">
 				<return-response>
 					<set-status code="400" reason="Bad Request" />

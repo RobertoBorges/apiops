@@ -16,7 +16,7 @@ paths:
   /nameff/:
     get:
       summary: nameff
-      operationId: 647e051433773d557d68cb01
+      operationId: nameff
       responses:
         '200':
           description: 
