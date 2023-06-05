@@ -1,0 +1,8 @@
+{
+  "properties": {
+    "displayName": "feature1",
+    "secret": false,
+    "tags": [],
+    "value": "1"
+  }
+}

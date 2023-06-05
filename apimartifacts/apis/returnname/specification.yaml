@@ -1,0 +1,35 @@
+openapi: 3.0.1
+info:
+  title: returnname
+  description: ''
+  version: ''
+servers:
+  - url: https://apim-bob-dev-eastus-001.azure-api.net/returnname
+paths:
+  /:
+    get:
+      summary: name
+      operationId: name
+      responses:
+        '200':
+          description: 
+  /nameff/:
+    get:
+      summary: nameff
+      operationId: 647e051433773d557d68cb01
+      responses:
+        '200':
+          description: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]
