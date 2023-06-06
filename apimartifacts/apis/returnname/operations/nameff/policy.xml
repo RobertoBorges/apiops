@@ -71,10 +71,12 @@ policy elements or at a higher level scope.
 					<value>application/atom+xml</value>
 				</set-header>
 			</when>
+		</choose>
+		<choose>
 			<when condition="@({{feature2}} == 1)">
-			<set-header name="TestHeader" exists-action="override">
-				<value>Hello World</value>
-			</set-header>
+				<set-header name="TestHeader" exists-action="override">
+					<value>Hello World4</value>
+				</set-header>
 			</when>
 		</choose>
 	</outbound>
