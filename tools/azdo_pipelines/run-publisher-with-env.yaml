@@ -75,7 +75,7 @@ steps:
 
         Write-Information "Downloading publisher..."
         $publisherFileName = "$(Agent.OS)" -like "*win*" ? "publisher.win-x64.exe" : "publisher.linux-x64.exe"
-        $uri = "https://github.com/Azure/apiops/releases/download/$(apiops_release_version)/$publisherFileName"
+        $uri = "${{ vars.APIOPS_RELEASE_VERSION }}/$(apiops_release_version)/$publisherFileName"
         $destinationFilePath = Join-Path "$(Agent.TempDirectory)" "publisher.exe"
         Invoke-WebRequest -Uri "$uri" -OutFile "$destinationFilePath"
 
