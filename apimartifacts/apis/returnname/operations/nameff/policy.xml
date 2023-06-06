@@ -29,6 +29,16 @@
 					<value>Bob</value>
 				</set-query-parameter>
 			</when>
+			<when condition="@({{feature2}} == 1)">
+				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<rewrite-uri template="/" />
+				<set-query-parameter name="code" exists-action="override">
+					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
+				</set-query-parameter>
+				<set-query-parameter name="name" exists-action="override">
+					<value>Hello World</value>
+				</set-query-parameter>
+			</when>
 			<otherwise>
 				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
 				<rewrite-uri template="/" />
