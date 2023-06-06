@@ -75,7 +75,7 @@ policy elements or at a higher level scope.
 		<choose>
 			<when condition="@({{feature2}} == 1)">
 				<set-header name="TestHeader" exists-action="override">
-					<value>Hello World4</value>
+					<value>Hello World5</value>
 				</set-header>
 			</when>
 		</choose>
