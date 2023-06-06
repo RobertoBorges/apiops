@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "displayName": "wsib-enterpriseintegrations-eclearance-internal",
+    "isCurrent": true,
+    "path": "wsdtes",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://deveai.gateway.apim.wsib.on.ca/ESB/services/eclearance",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": false,
+    "type": "soap"
+  }
+}
