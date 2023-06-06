@@ -1,14 +1,20 @@
 <!--
     IMPORTANT:
     - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
-    - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
-    - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
-    - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
+    - To apply a policy to the incoming request (before it is forwarded to the backend service), place
+a corresponding policy element within the <inbound> section element.
+    - To apply a policy to the outgoing response (before it is sent back to the caller), place a
+corresponding policy element within the <outbound> section element.
+    - To add a policy, place the cursor at the desired insertion point and select a policy from the
+sidebar.
     - To remove a policy, delete the corresponding policy statement from the policy document.
-    - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
-    - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
+    - Position the <base> element within a section element to inherit all policies from the
+corresponding section element in the enclosing scope.
+    - Remove the <base> element to prevent inheriting policies from the corresponding section element
+in the enclosing scope.
     - Policies are applied in the order of their appearance, from the top down.
-    - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
+    - Comments within policy elements are not supported and may disappear. Place your comments between
+policy elements or at a higher level scope.
 -->
 <policies>
 	<inbound>
@@ -18,9 +24,10 @@
 				IMPORTANT:
 				This uses Feature Flags to determine which backend to call.
 				A great way to automate even better, is to use Named Values in conjunction with Azure Key Vault.
-			-->		
+			-->
 			<when condition="@({{feature1}} == 1)">
-				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<set-backend-service
+					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
@@ -30,7 +37,8 @@
 				</set-query-parameter>
 			</when>
 			<when condition="@({{feature2}} == 1)">
-				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<set-backend-service
+					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
@@ -40,7 +48,8 @@
 				</set-query-parameter>
 			</when>
 			<otherwise>
-				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
+				<set-backend-service
+					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>xA80ty8fcdtNFqW_2pJlyZTwZQ9AdM1nyq1cYXISkcqoAzFu8UYIyg==</value>
@@ -62,13 +71,10 @@
 					<value>application/atom+xml</value>
 				</set-header>
 			</when>
-				<when condition="@({{feature2}} != 1)">
-				<set-header name="Content-Type" exists-action="override">
-					<value>application/atom+xml</value>
-				</set-header>
-				<set-header name="TestHeader" exists-action="override">
-					<value>Hello World</value>
-				</set-header>				
+			<when condition="@({{feature2}} == 1)">
+			<set-header name="TestHeader" exists-action="override">
+				<value>Hello World</value>
+			</set-header>
 			</when>
 		</choose>
 	</outbound>
