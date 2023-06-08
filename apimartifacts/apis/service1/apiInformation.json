@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "displayName": "Service1",
+    "isCurrent": true,
+    "path": "service1",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "http://localhost:64103/Service1.svc",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true,
+    "type": "soap"
+  }
+}
