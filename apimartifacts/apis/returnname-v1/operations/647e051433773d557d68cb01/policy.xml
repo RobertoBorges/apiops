@@ -14,24 +14,9 @@
 	<inbound>
 		<base />
 		<choose>
-			<!--
-				IMPORTANT:
-				This sample only answers to requests with a version header of v1 or v2.
-				This must be a contract between the API and the caller.
-			-->
-			<when condition="@(!context.Request.Headers.ContainsKey("version"))">
-				<return-response>
-					<set-status code="400" reason="Bad Request" />
-					<set-header name="Content-Type" exists-action="override">
-						<value>application/json</value>
-					</set-header>
-					<set-body>{
-                        "error": "Missing required header 'version'"
-                    }</set-body>
-				</return-response>
-			</when>
-			<when condition="@((string)context.Request.Headers["version"].First() == "v1")">
+			<when condition="@({{feature1}} == 1)">
 				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
 				</set-query-parameter>
@@ -39,25 +24,15 @@
 					<value>Bob</value>
 				</set-query-parameter>
 			</when>
-			<when condition="@((string)context.Request.Headers["version"].First() == "v2")">
+			<otherwise>
 				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
+				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>xA80ty8fcdtNFqW_2pJlyZTwZQ9AdM1nyq1cYXISkcqoAzFu8UYIyg==</value>
 				</set-query-parameter>
 				<set-query-parameter name="name" exists-action="override">
 					<value>Test2</value>
 				</set-query-parameter>
-			</when>
-			<otherwise>
-				<return-response>
-					<set-status code="400" reason="Bad Request" />
-					<set-header name="Content-Type" exists-action="override">
-						<value>application/json</value>
-					</set-header>
-					<set-body>{
-                        "error": "Invalid value for header 'version', accepted values are v1 or v2"
-                    }</set-body>
-				</return-response>
 			</otherwise>
 		</choose>
 	</inbound>
@@ -67,7 +42,7 @@
 	<outbound>
 		<base />
 		<choose>
-			<when condition="@((string)context.Request.Headers["version"].First() == "v2")">
+			<when condition="@({{feature1}} != 1)">
 				<set-header name="Content-Type" exists-action="override">
 					<value>application/atom+xml</value>
 				</set-header>
