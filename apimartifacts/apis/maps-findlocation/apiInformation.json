@@ -1,0 +1,19 @@
+{
+  "properties": {
+    "apiRevision": "1",
+    "authenticationSettings": {},
+    "description": "",
+    "displayName": "maps/findlocation",
+    "isCurrent": true,
+    "path": "maps/findlocation",
+    "protocols": [
+      "https"
+    ],
+    "serviceUrl": "https://maps.googleapis.com/maps/api/place/findplacefromtext",
+    "subscriptionKeyParameterNames": {
+      "header": "Ocp-Apim-Subscription-Key",
+      "query": "subscription-key"
+    },
+    "subscriptionRequired": true
+  }
+}
