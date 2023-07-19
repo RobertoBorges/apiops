@@ -2,26 +2,24 @@ openapi: 3.0.1
 info:
   title: returnname
   description: ''
-  version: ''
+  version: v1
 servers:
-  - url: https://apim-bob-dev-eastus-001.azure-api.net/returnname
+  - url: https://apim-bob-dev-eastus-001.azure-api.net/returnname/v1
 paths:
   /:
     get:
       summary: name
-      description: name
       operationId: name
       responses:
         '200':
-          description: ''
+          description: 
   /nameff/:
     get:
       summary: nameff
-      description: nameff
-      operationId: nameff
+      operationId: 647e051433773d557d68cb01
       responses:
         '200':
-          description: ''
+          description: 
 components:
   securitySchemes:
     apiKeyHeader:
