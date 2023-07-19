@@ -70,7 +70,7 @@ jobs:
 
           Write-Information "Downloading publisher..."
           $publisherFileName = "${{ runner.os }}" -like "*win*" ? "publisher.win-x64.exe" : "publisher.linux-x64.exe"
-          $uri = "${{ vars.APIOPS_BINARY_FILES }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
+          $uri = "${{ vars.APIOPS_RELEASE_VERSION }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
           $destinationFilePath = Join-Path "${{ runner.temp }}" "publisher.exe"
           Invoke-WebRequest -Uri "$uri" -OutFile "$destinationFilePath"
 
@@ -105,7 +105,7 @@ jobs:
 
           Write-Information "Downloading publisher..."
           $publisherFileName = "${{ runner.os }}" -like "*win*" ? "publisher.win-x64.exe" : "publisher.linux-x64.exe"
-          $uri = "${{ vars.APIOPS_BINARY_FILES }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
+          $uri = "${{ vars.APIOPS_RELEASE_VERSION }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
           $destinationFilePath = Join-Path "${{ runner.temp }}" "publisher.exe"
           Invoke-WebRequest -Uri "$uri" -OutFile "$destinationFilePath"
 
@@ -142,7 +142,7 @@ jobs:
 
           Write-Information "Downloading publisher..."
           $publisherFileName = "${{ runner.os }}" -like "*win*" ? "publisher.win-x64.exe" : "publisher.linux-x64.exe"
-          $uri = "${{ vars.APIOPS_BINARY_FILES }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
+          $uri = "${{ vars.APIOPS_RELEASE_VERSION }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
           $destinationFilePath = Join-Path "${{ runner.temp }}" "publisher.exe"
           Invoke-WebRequest -Uri "$uri" -OutFile "$destinationFilePath"
 
@@ -178,7 +178,7 @@ jobs:
 
           Write-Information "Downloading publisher..."
           $publisherFileName = "${{ runner.os }}" -like "*win*" ? "publisher.win-x64.exe" : "publisher.linux-x64.exe"
-          $uri = "${{ vars.APIOPS_BINARY_FILES }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
+          $uri = "${{ vars.APIOPS_RELEASE_VERSION }}/${{ vars.APIOPS_RELEASE_VERSION }}/$publisherFileName"
           $destinationFilePath = Join-Path "${{ runner.temp }}" "publisher.exe"
           Invoke-WebRequest -Uri "$uri" -OutFile "$destinationFilePath"
 
