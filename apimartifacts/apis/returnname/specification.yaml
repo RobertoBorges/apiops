@@ -9,19 +9,17 @@ paths:
   /:
     get:
       summary: name
-      description: name
       operationId: name
       responses:
         '200':
-          description: ''
+          description: 
   /nameff/:
     get:
       summary: nameff
-      description: nameff
       operationId: nameff
       responses:
         '200':
-          description: ''
+          description: 
 components:
   securitySchemes:
     apiKeyHeader:
