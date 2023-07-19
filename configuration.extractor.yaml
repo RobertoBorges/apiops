@@ -3,25 +3,33 @@
 # More information about workspaces can be found here https://learn.microsoft.com/en-us/azure/api-management/workspaces-overview
 
  apiNames:
-  - api1
-  - api2
+  - eshoponcontainers-basket-http-api
+  - eshoponcontainers-catalog
+  - eshoponcontainers-ordering-api
+  - maps-findlocation
+  - 64ad5daaff2257c969a8e4b9
+  - wsib-enterpriseintegrations-eclearance-internal
+  - returnname
+  - returnname-v1
 
- loggerNames:
-  - loggerName1
-  - loggerName2
 
- namedValueNames:
-  - namedValueName1
-  - namedValueName2
 
- productNames:
-  - productName2
-  - productName2
+#  loggerNames:
+#   - loggerName1
+#   - loggerName2
 
- backendNames:
-  - backend1
-  - backend2
+#  namedValueNames:
+#   - namedValueName1
+#   - namedValueName2
 
- tagNames:
-  - tag1
-  - tag2
+#  productNames:
+#   - productName2
+#   - productName2
+
+#  backendNames:
+#   - backend1
+#   - backend2
+
+#  tagNames:
+#   - tag1
+#   - tag2
