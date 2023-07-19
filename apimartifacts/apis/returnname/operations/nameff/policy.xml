@@ -26,8 +26,7 @@ policy elements or at a higher level scope.
 				A great way to automate even better, is to use Named Values in conjunction with Azure Key Vault.
 			-->
 			<when condition="@({{feature1}} == 1)">
-				<set-backend-service
-					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
@@ -37,8 +36,7 @@ policy elements or at a higher level scope.
 				</set-query-parameter>
 			</when>
 			<when condition="@({{feature2}} == 1)">
-				<set-backend-service
-					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
+				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnjson" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>I4o6k1DyOjxTOxSTL8Exb2hKEKFFizv8pqIG4yKeU6PDAzFu-SyQ_g==</value>
@@ -48,8 +46,7 @@ policy elements or at a higher level scope.
 				</set-query-parameter>
 			</when>
 			<otherwise>
-				<set-backend-service
-					base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
+				<set-backend-service base-url="https://aaddemocustomatt.azurewebsites.net/api/funcreturnxml" />
 				<rewrite-uri template="/" />
 				<set-query-parameter name="code" exists-action="override">
 					<value>xA80ty8fcdtNFqW_2pJlyZTwZQ9AdM1nyq1cYXISkcqoAzFu8UYIyg==</value>

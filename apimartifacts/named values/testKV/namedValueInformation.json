@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "displayName": "testKV",
+    "keyVault": {
+      "secretIdentifier": "https://nonprodborgeskv.vault.azure.net/secrets/feature1"
+    },
+    "secret": true,
+    "tags": []
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "properties": {
+    "displayName": "servicebussaskey",
+    "keyVault": {
+      "secretIdentifier": "https://kv-bob-dev-eastus-001.vault.azure.net/secrets/srvicebussas"
+    },
+    "secret": true,
+    "tags": []
+  }
+}
