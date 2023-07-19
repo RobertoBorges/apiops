@@ -10,7 +10,7 @@
     "protocols": [
       "https"
     ],
-    "serviceUrl": "https://apim-bob-dev-eastus-001.azure-api.net/returnname",
+    "serviceUrl": "https://aaddemocustomatt.azurewebsites.net/api/",
     "subscriptionKeyParameterNames": {
       "header": "Ocp-Apim-Subscription-Key",
       "query": "subscription-key"
